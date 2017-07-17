@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Urgence_N_1_Formation_Néo
 {
@@ -37,15 +33,50 @@ namespace Urgence_N_1_Formation_Néo
             // | |
             // O-O
             //
-            //
             // Vous devrez bien évidement prouvez à votre code Guru que ce système marche avec n'importe
             // quelles valeurs pour L et H comprises entre 1 et 50!
+            //
+            //
+            // Vous avez validé cette première étape ? Très bien, voici la suite :
+            // Vous allez devoir afficher un damier noir et blanc à l'interieur du rectangle.
+            // 
+            // Exemple: L = 10, H = 10
+            //
+            // 0--------0
+            // |XOXOXOXO|
+            // |OXOXOXOX|
+            // |XOXOXOXO|
+            // |OXOXOXOX|
+            // |XOXOXOXO|
+            // |OXOXOXOX|
+            // |XOXOXOXO|
+            // |OXOXOXOX|
+            // 0--------0
+            //
+            //
+            // Vous avez aussi validé la deuxième étape ? Parfais, voici la dernière :
+            // Vous devez maintenant laisser une case vide dans le damier toute les 7 cases.
+            //
+            // Exemple: L = 10, H = 10
+            //
+            // 0--------0
+            // |XOXOXO O|
+            // |OXOXO OX|
+            // |XOXO OXO|
+            // |OXO OXOX|
+            // |XO OXOXO|
+            // |O OXOXOX|
+            // | OXOXOX |
+            // |OXOXOX X|
+            // 0--------0
 
             // Interdiction de modifier ce code!!!
             char Coin = '0';
             char Hor = '-';
             char Ver = '|';
             char Centre = ' ';
+            char Blanc = 'X';
+            char Noir = 'O';
 
             int L = 0;
             int H = 0;
@@ -55,6 +86,7 @@ namespace Urgence_N_1_Formation_Néo
             int.TryParse(Console.ReadLine(), out H);
             // Fin d'interdiction
 
+            int count = 1;
             // On parcours la largeur
             for (int larg = 0; larg < L; larg++)
             {
@@ -79,7 +111,23 @@ namespace Urgence_N_1_Formation_Néo
                     // Centre du carré
                     else
                     {
-                        Console.Write(Centre);
+                        if (count % 7 == 0)
+                            Console.Write(Centre);
+                        else if (larg % 2 == 0)
+                        {
+                            if (haut % 2 == 0)
+                                Console.Write(Blanc);
+                            else
+                                Console.Write(Noir);
+                        }
+                        else
+                        {
+                            if (haut % 2 == 0)
+                                Console.Write(Noir);
+                            else
+                                Console.Write(Blanc);
+                        }
+                        count++;
                     }
                 }
                 // Fin de la ligne
